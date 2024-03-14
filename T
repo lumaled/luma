@@ -1,0 +1,14 @@
+char degree = 176; // ASCII Value of Degree
+const int sensor = A1;
+void setup() {
+ pinMode(sensor, INPUT);
+ Serial.begin(9600);}
+void loop() {
+ int tmp = analogRead(sensor); // Read data from the sensor. This voltage is stored as a 10-bit number.
+ float voltage = (tmp * 5.0) / 1024; // Convert the 10-bit number to a voltage reading.
+ float tmpCel = (voltage - 0.5) * 100.0; // Convert voltage to Celsius.
+ Serial.print("Celsius: ");
+ Serial.print(tmpCel);
+ Serial.println(degree);
+ delay(1000);
+}
